@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "easy use of jspm in mixed backend/frontend tools",
   "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
     "test": "(npmts)"
   },
@@ -15,5 +16,19 @@
   "bugs": {
     "url": "https://gitlab.com/philkunz/smartjspm/issues"
   },
-  "homepage": "https://gitlab.com/philkunz/smartjspm#README"
+  "homepage": "https://gitlab.com/philkunz/smartjspm#README",
+  "dependencies": {
+    "@types/q": "0.x.x",
+    "@types/shelljs": "^0.3.31",
+    "beautylog": "^5.0.23",
+    "jspm": "^0.16.46",
+    "npmextra": "^2.0.3",
+    "q": "^1.4.1",
+    "shelljs": "^0.7.4",
+    "smartfile": "^4.0.24",
+    "typings-global": "^1.0.14"
+  },
+  "devDependencies": {
+    "typings-test": "^1.0.3"
+  }
 }

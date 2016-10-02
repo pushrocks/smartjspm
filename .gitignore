@@ -1,0 +1,7 @@
+node_modules/
+jspm_packages/
+test/config.js
+test/package.json
+pages/
+public/
+coverage/
