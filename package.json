@@ -1,0 +1,19 @@
+{
+  "name": "smartjspm",
+  "version": "1.0.0",
+  "description": "easy use of jspm in mixed backend/frontend tools",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "(npmts)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/philkunz/smartjspm.git"
+  },
+  "author": "Lossless GmbH",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/philkunz/smartjspm/issues"
+  },
+  "homepage": "https://gitlab.com/philkunz/smartjspm#README"
+}
