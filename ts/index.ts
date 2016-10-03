@@ -24,6 +24,10 @@ export class SmartJspm {
     targetDir: string
     npmDevDir: string
     dependencyArray: IJspmDependency[] = []
+    jspmPath = plugins.path.join(
+        plugins.path.parse(require.resolve('jspm')).dir,
+        'jspm.js'
+    )
     constructor(optionsArg: ISmartJspmConstructorOptions) {
         this.targetDir = optionsArg.targetDir
         this.npmDevDir = optionsArg.npmDevDir
@@ -37,25 +41,20 @@ export class SmartJspm {
         plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
         plugins.jspm.setPackagePath(targetDirArg)
-        plugins.jspm.install(true, { lock: false }).then(() => {
-            let configFile: string = plugins.smartfile.fs.toStringSync(plugins.path.join(targetDirArg, 'config.js'))
-            configFile = configFile.replace('  transpiler: "babel",','')
-            plugins.smartfile.memory.toFsSync(configFile, plugins.path.join(targetDirArg, 'config.js'))
-            done.resolve()
-        })
+        plugins.shelljs.exec(`cd ${this.targetDir} && node ${this.jspmPath} install -y`)
+        done.resolve()
         return done.promise
     }
 
     /**
      * creates bundle for production
      */
-    createBundle(targetDirArg = this.targetDir, buildFile: string = 'main'): q.Promise<void> {
+    createBundle(targetDirArg = this.targetDir, buildFile: string = 'main.js'): q.Promise<void> {
         let done = q.defer<void>()
         plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
-        plugins.jspm.bundle(buildFile, 'build.js', { mangle: false }).then(function() {
-            done.resolve()
-        })
+        plugins.shelljs.exec(`cd ${this.targetDir} && node ${this.jspmPath} build ${buildFile} -y`)
+        done.resolve()
         return done.promise
     }
 
@@ -64,10 +63,16 @@ export class SmartJspm {
      */
     installNpmDevDir(): void {
         let installString = 'npm install'
+        let installDir: string
+        if (this.npmDevDir) {
+            installDir = this.npmDevDir
+        } else {
+            installDir = this.targetDir
+        }
         for (let dependency of this.dependencyArray) {
             installString = installString + ` ${dependency.name}@${dependency.version}`
         }
-        plugins.shelljs.exec(`cd ${this.npmDevDir} && ${installString}`)
+        plugins.shelljs.exec(`cd ${installDir} && ${installString}`)
     }
 
     /**

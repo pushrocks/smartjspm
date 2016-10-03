@@ -18,6 +18,7 @@ export declare class SmartJspm {
     targetDir: string;
     npmDevDir: string;
     dependencyArray: IJspmDependency[];
+    jspmPath: string;
     constructor(optionsArg: ISmartJspmConstructorOptions);
     /**
      * installs jspm dependencies into a directory

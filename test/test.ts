@@ -4,6 +4,8 @@ import * as path from 'path'
 import * as should from 'should'
 import * as smartfile from 'smartfile'
 
+process.env.CI = 'true'
+
 let testSmartjspm: smartjspm.SmartJspm
 let testTargetDir = path.join(__dirname, 'targetDir')
 
@@ -24,6 +26,10 @@ describe('smartjspm',function(){
         this.timeout(60000)
         testSmartjspm.readNpmextraJspmDependencies(__dirname)
         testSmartjspm.installJspmTarget().then(() => { done() })
+    })
+    it('should install dependencies from npmextra.json to node_modules',function(){
+        this.timeout(30000)
+        testSmartjspm.installNpmDevDir()
     })
     it('should install a bundled version for production', function(done){
         this.timeout(60000)

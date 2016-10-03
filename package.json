@@ -22,7 +22,7 @@
     "@types/q": "0.x.x",
     "@types/shelljs": "^0.3.31",
     "beautylog": "^5.0.23",
-    "jspm": "^0.16.46",
+    "jspm": "^0.17.0-beta.29",
     "npmextra": "^2.0.3",
     "q": "^1.4.1",
     "shelljs": "^0.7.4",
