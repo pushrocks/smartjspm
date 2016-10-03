@@ -6,7 +6,7 @@
   "typings": "dist/index.d.ts",
   "scripts": {
     "test": "(npm run clean && npmts)",
-    "clean": "(rm -r test/targetDir/)"
+    "clean": "(rm -rf test/targetDir/)"
   },
   "repository": {
     "type": "git",
