@@ -53,7 +53,6 @@ export class SmartJspm {
         let done = q.defer<void>()
         plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
-        plugins.jspm.setPackagePath(targetDirArg)
         plugins.jspm.bundle(buildFile, 'build.js', { mangle: false }).then(function() {
             done.resolve()
         })

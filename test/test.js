@@ -24,7 +24,7 @@ describe('smartjspm', function () {
         testSmartjspm.installJspmTarget().then(() => { done(); });
     });
     it('should install a bundled version for production', function (done) {
-        this.timeout(30000);
+        this.timeout(60000);
         smartfile.memory.toFsSync(testFileString, path.join(testTargetDir, 'main.js'));
         testSmartjspm.createBundle().then(() => { done(); }).catch(err => { console.log(err); });
     });
