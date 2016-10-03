@@ -1,7 +1,6 @@
 node_modules/
-jspm_packages/
-test/config.js
-test/package.json
+test/targetDir/
+test/targetDirBundled/
 pages/
 public/
 coverage/

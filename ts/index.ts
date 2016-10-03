@@ -34,9 +34,24 @@ export class SmartJspm {
      */
     installJspmTarget(targetDirArg = this.targetDir): q.Promise<void> {
         let done = q.defer<void>()
+        plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
-        plugins.jspm.setPackagePath(this.targetDir)
+        plugins.jspm.setPackagePath(targetDirArg)
         plugins.jspm.install(true, { lock: false }).then(() => { done.resolve() })
+        return done.promise
+    }
+
+    /**
+     * creates bundle for production
+     */
+    createBundle(targetDirArg = this.targetDir, buildFile: string = 'main'): q.Promise<void> {
+        let done = q.defer<void>()
+        plugins.smartfile.fs.ensureDirSync(targetDirArg)
+        this.writeJspmPackageJson()
+        plugins.jspm.setPackagePath(targetDirArg)
+        plugins.jspm.bundle(buildFile, 'build.js', { mangle: false }).then(function() {
+            done.resolve()
+        })
         return done.promise
     }
 
@@ -50,7 +65,6 @@ export class SmartJspm {
         }
         plugins.shelljs.exec(`cd ${this.npmDevDir} && ${installString}`)
     }
-
 
     /**
      * reads the dependencies from a source

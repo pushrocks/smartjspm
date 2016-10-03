@@ -29,6 +29,8 @@
     "typings-global": "^1.0.14"
   },
   "devDependencies": {
+    "@types/should": "^8.1.30",
+    "should": "^11.1.0",
     "typings-test": "^1.0.3"
   }
 }
