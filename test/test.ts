@@ -4,12 +4,13 @@ import * as smartjspm from '../dist/index'
 let testSmartjspm: smartjspm.SmartJspm
 
 describe('smartjspm',function(){
-    it('should install npm modules for browser use',function(){
+    it('should install npm modules for browser use',function(done){
+        this.timeout(60000)
         testSmartjspm = new smartjspm.SmartJspm({
             targetDir: __dirname,
             npmDevDir: __dirname
         })
         testSmartjspm.readNpmextraJspmDependencies(__dirname)
-        testSmartjspm.installJspmTarget()
+        testSmartjspm.installJspmTarget().then(() => { done() })
     })
 })

@@ -36,15 +36,14 @@ export class SmartJspm {
         let done = q.defer<void>()
         this.writeJspmPackageJson()
         plugins.jspm.setPackagePath(this.targetDir)
-        plugins.jspm.install(true, { lock: false })
-        done.resolve()
+        plugins.jspm.install(true, { lock: false }).then(() => { done.resolve() })
         return done.promise
     }
 
     /**
      * Installs all npm dependencies into the root of the development directory so IDE picks up TypeScript
      */
-    installNpmDevDir():void {
+    installNpmDevDir(): void {
         let installString = 'npm install'
         for (let dependency of this.dependencyArray) {
             installString = installString + ` ${dependency.name}@${dependency.version}`
