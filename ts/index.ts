@@ -37,7 +37,12 @@ export class SmartJspm {
         plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
         plugins.jspm.setPackagePath(targetDirArg)
-        plugins.jspm.install(true, { lock: false }).then(() => { done.resolve() })
+        plugins.jspm.install(true, { lock: false }).then(() => {
+            let configFile: string = plugins.smartfile.fs.toStringSync(plugins.path.join(targetDirArg, 'config.js'))
+            configFile = configFile.replace('  transpiler: "babel",','')
+            plugins.smartfile.memory.toFsSync(configFile, plugins.path.join(targetDirArg, 'config.js'))
+            done.resolve()
+        })
         return done.promise
     }
 

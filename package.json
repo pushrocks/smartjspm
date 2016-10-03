@@ -5,7 +5,8 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "(npmts)"
+    "test": "(npm run clean && npmts)",
+    "clean": "(rm -r test/targetDir/)"
   },
   "repository": {
     "type": "git",

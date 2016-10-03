@@ -13,7 +13,7 @@ let testFileString = `
 `
 
 describe('smartjspm',function(){
-    it('should install npm modules for browser use',function(){
+    it('should create an instance of class Smartjspm',function(){
         testSmartjspm = new smartjspm.SmartJspm({
             targetDir: testTargetDir,
             npmDevDir: testTargetDir
