@@ -27,6 +27,7 @@
     "q": "^1.4.1",
     "shelljs": "^0.7.4",
     "smartfile": "^4.0.24",
+    "smartstring": "^2.0.17",
     "typings-global": "^1.0.14"
   },
   "devDependencies": {

@@ -42,6 +42,22 @@ export class SmartJspm {
         this.writeJspmPackageJson()
         plugins.jspm.setPackagePath(targetDirArg)
         plugins.shelljs.exec(`cd ${this.targetDir} && node ${this.jspmPath} install -y`)
+        let jspmConfigJs = plugins.smartfile.fs.toStringSync(plugins.path.join(this.targetDir, 'jspm.config.js'))
+        let jspmConfigPrefix = plugins.smartstring.indent.normalize(`
+            SystemJS.config({
+                packages: {
+                    app: {
+                        main: './main.js',
+                        defaultExtension: 'js'
+                    }
+                }
+            });
+        `)
+        let appJSConfigRegex = /app:.*{\n\s*main:/
+        if (!appJSConfigRegex.test(jspmConfigJs)) {
+            jspmConfigJs = jspmConfigPrefix + jspmConfigJs
+            plugins.smartfile.memory.toFsSync(jspmConfigJs, plugins.path.join(this.targetDir, 'jspm.config.js'))
+        }
         done.resolve()
         return done.promise
     }
