@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@types/should": "^8.1.30",
+    "npmts-g": "^5.2.8",
     "should": "^11.1.0",
     "typings-test": "^1.0.3"
   }
