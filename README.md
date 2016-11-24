@@ -10,6 +10,7 @@ smartjspm wraps the awesome jspm to enable easier automated workflows
 ## Status for master
 [![build status](https://gitlab.com/pushrocks/smartjspm/badges/master/build.svg)](https://gitlab.com/pushrocks/smartjspm/commits/master)
 [![coverage report](https://gitlab.com/pushrocks/smartjspm/badges/master/coverage.svg)](https://gitlab.com/pushrocks/smartjspm/commits/master)
+[![npm downloads per month](https://img.shields.io/npm/dm/smartjspm.svg)](https://www.npmjs.com/package/smartjspm)
 [![Dependency Status](https://david-dm.org/pushrocks/smartjspm.svg)](https://david-dm.org/pushrocks/smartjspm)
 [![bitHound Dependencies](https://www.bithound.io/github/pushrocks/smartjspm/badges/dependencies.svg)](https://www.bithound.io/github/pushrocks/smartjspm/master/dependencies/npm)
 [![bitHound Code](https://www.bithound.io/github/pushrocks/smartjspm/badges/code.svg)](https://www.bithound.io/github/pushrocks/smartjspm)
@@ -18,9 +19,9 @@ smartjspm wraps the awesome jspm to enable easier automated workflows
 [![JavaScript Style Guide](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Usage
-We recommend the use of typescript for best intellisense
+We recommend the use of TypeScript for best intellisense
 
-```typescript
+```javascript
 import * as smartjspm from 'smartjspm'
 
 // Lets create an instance of Smartjspm
