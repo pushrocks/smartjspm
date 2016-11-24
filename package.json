@@ -1,6 +1,6 @@
 {
   "name": "smartjspm",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "easy use of jspm in mixed backend/frontend tools",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
