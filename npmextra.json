@@ -1,0 +1,9 @@
+{
+    "npmci": {
+        "globalNpmTools": [
+            "npmts",
+            "npmpage",
+            "npmdocker"
+        ]
+    }
+}

@@ -7,7 +7,7 @@ smartjspm wraps the awesome jspm to enable easier automated workflows
 [![git](https://push.rocks/assets/repo-button-mirror.svg)](https://github.com/pushrocks/smartjspm)
 [![docs](https://push.rocks/assets/repo-button-docs.svg)](https://pushrocks.gitlab.io/smartjspm/)
 
-## Status for master
+## Status for master1
 [![build status](https://gitlab.com/pushrocks/smartjspm/badges/master/build.svg)](https://gitlab.com/pushrocks/smartjspm/commits/master)
 [![coverage report](https://gitlab.com/pushrocks/smartjspm/badges/master/coverage.svg)](https://gitlab.com/pushrocks/smartjspm/commits/master)
 [![npm downloads per month](https://img.shields.io/npm/dm/smartjspm.svg)](https://www.npmjs.com/package/smartjspm)
