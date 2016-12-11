@@ -86,12 +86,12 @@ export class SmartJspm {
      * @param targetDirArg - defaults to targetDir
      * @param buildFile - the name of the file to bundle
      */
-    createBundle(targetDirArg = this.targetDir, buildFile: string = 'main.js'): q.Promise<void> {
+    createBundle(bundleTargetDirArg = this.targetDir, buildFile: string = 'main.js'): q.Promise<void> {
         let done = q.defer<void>()
-        plugins.smartfile.fs.ensureDirSync(targetDirArg)
+        plugins.smartfile.fs.ensureDirSync(bundleTargetDirArg)
         this.writeJspmPackageJson()
         plugins.shelljs.exec(
-            `cd ${targetDirArg} && node ${this.jspmPath} build ${plugins.path.join(targetDirArg,buildFile)} -y`
+            `cd ${bundleTargetDirArg} && node ${this.jspmPath} build ${plugins.path.join(this.targetDir,buildFile)} -y`
         )
         done.resolve()
         return done.promise
