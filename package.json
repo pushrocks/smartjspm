@@ -20,20 +20,20 @@
   "homepage": "https://gitlab.com/philkunz/smartjspm#README",
   "dependencies": {
     "@types/q": "0.x.x",
-    "@types/shelljs": "^0.3.31",
-    "beautylog": "^5.0.23",
+    "@types/shelljs": "^0.3.33",
+    "beautylog": "^6.0.0",
     "jspm": "^0.17.0-beta.29",
     "npmextra": "^2.0.3",
     "q": "^1.4.1",
-    "shelljs": "^0.7.4",
-    "smartfile": "^4.0.24",
-    "smartstring": "^2.0.17",
+    "shelljs": "^0.7.5",
+    "smartfile": "^4.1.0",
+    "smartstring": "^2.0.22",
     "typings-global": "^1.0.14"
   },
   "devDependencies": {
     "@types/should": "^8.1.30",
-    "npmts-g": "^5.2.8",
-    "should": "^11.1.0",
+    "npmts-g": "^5.2.10",
+    "should": "^11.1.2",
     "typings-test": "^1.0.3"
   }
 }

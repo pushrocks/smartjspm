@@ -21,13 +21,32 @@ export interface ISmartJspmConstructorOptions {
 }
 
 export class SmartJspm {
+    /**
+     * the target directory to install jspm modules to
+     */
     targetDir: string
+
+    /**
+     * the npm directory that the IDE looks for modules during development and transpiling
+     */
     npmDevDir: string
+
+    /**
+     * the needed dependencies specified in npmextra.json
+     */
     dependencyArray: IJspmDependency[] = []
+
+    /**
+     * the path to jspm bin executable
+     */
     jspmPath = plugins.path.join(
         plugins.path.parse(require.resolve('jspm')).dir,
         'jspm.js'
     )
+
+    /**
+     * the constructor for the SmartJspm class
+     */
     constructor(optionsArg: ISmartJspmConstructorOptions) {
         this.targetDir = optionsArg.targetDir
         this.npmDevDir = optionsArg.npmDevDir
@@ -64,12 +83,16 @@ export class SmartJspm {
 
     /**
      * creates bundle for production
+     * @param targetDirArg - defaults to targetDir
+     * @param buildFile - the name of the file to bundle
      */
     createBundle(targetDirArg = this.targetDir, buildFile: string = 'main.js'): q.Promise<void> {
         let done = q.defer<void>()
         plugins.smartfile.fs.ensureDirSync(targetDirArg)
         this.writeJspmPackageJson()
-        plugins.shelljs.exec(`cd ${this.targetDir} && node ${this.jspmPath} build ${buildFile} -y`)
+        plugins.shelljs.exec(
+            `cd ${targetDirArg} && node ${this.jspmPath} build ${plugins.path.join(targetDirArg,buildFile)} -y`
+        )
         done.resolve()
         return done.promise
     }

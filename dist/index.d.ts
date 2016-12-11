@@ -15,10 +15,25 @@ export interface ISmartJspmConstructorOptions {
     npmDevDir: string;
 }
 export declare class SmartJspm {
+    /**
+     * the target directory to install jspm modules to
+     */
     targetDir: string;
+    /**
+     * the npm directory that the IDE looks for modules during development and transpiling
+     */
     npmDevDir: string;
+    /**
+     * the needed dependencies specified in npmextra.json
+     */
     dependencyArray: IJspmDependency[];
+    /**
+     * the path to jspm bin executable
+     */
     jspmPath: string;
+    /**
+     * the constructor for the SmartJspm class
+     */
     constructor(optionsArg: ISmartJspmConstructorOptions);
     /**
      * installs jspm dependencies into a directory
@@ -26,6 +41,8 @@ export declare class SmartJspm {
     installJspmTarget(targetDirArg?: string): q.Promise<void>;
     /**
      * creates bundle for production
+     * @param targetDirArg - defaults to targetDir
+     * @param buildFile - the name of the file to bundle
      */
     createBundle(targetDirArg?: string, buildFile?: string): q.Promise<void>;
     /**
