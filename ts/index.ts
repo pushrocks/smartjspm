@@ -83,15 +83,22 @@ export class SmartJspm {
 
     /**
      * creates bundle for production
-     * @param targetDirArg - defaults to targetDir
-     * @param buildFile - the name of the file to bundle
+     * @param bundleBaseDir - the base directory to bundle files from
+     * @param buildFile - the relative path of the 
+     * @param bundletargetDirArg - defaults to targetDir
      */
-    createBundle(bundleTargetDirArg = this.targetDir, buildFile: string = 'main.js'): q.Promise<void> {
+    createBundle(
+        bundleBaseDirArg: string = this.targetDir,
+        buildFileArg: string = 'main.js',
+        bundleTargetDirArg = this.targetDir
+    ): q.Promise<void> {
         let done = q.defer<void>()
         plugins.smartfile.fs.ensureDirSync(bundleTargetDirArg)
         this.writeJspmPackageJson()
         plugins.shelljs.exec(
-            `cd ${bundleTargetDirArg} && node ${this.jspmPath} build ${plugins.path.join(this.targetDir,buildFile)} -y`
+            `cd ${bundleBaseDirArg} && ` +
+            `node ${this.jspmPath} build ${plugins.path.join(bundleBaseDirArg,buildFileArg)} ` +
+            `${plugins.path.join(bundleTargetDirArg, 'build.js')} -y`
         )
         done.resolve()
         return done.promise

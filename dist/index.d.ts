@@ -41,10 +41,11 @@ export declare class SmartJspm {
     installJspmTarget(targetDirArg?: string): q.Promise<void>;
     /**
      * creates bundle for production
-     * @param targetDirArg - defaults to targetDir
-     * @param buildFile - the name of the file to bundle
+     * @param bundleBaseDir - the base directory to bundle files from
+     * @param buildFile - the relative path of the
+     * @param bundletargetDirArg - defaults to targetDir
      */
-    createBundle(bundleTargetDirArg?: string, buildFile?: string): q.Promise<void>;
+    createBundle(bundleBaseDirArg?: string, buildFileArg?: string, bundleTargetDirArg?: string): q.Promise<void>;
     /**
      * Installs all npm dependencies into the root of the development directory so IDE picks up TypeScript
      */
